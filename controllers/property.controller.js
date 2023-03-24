@@ -84,3 +84,4 @@ exports.getPropertybyIdCtrl = async (req, res, next) => {
   }
 }
 
+
