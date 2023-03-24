@@ -6,7 +6,7 @@ const Customer = require("../models/Customer.model");
 exports.createTripCtrl = async (req, res, next) => {
   const { checkInDate, checkOutDate, numOfTravelers, fullName, email, properties } =
     req.body;
-  console.log(checkInDate, checkOutDate, numOfTravelers, fullName, email);
+  
   try {
 
     const createdCustomer = await Customer.create({fullName, email})
@@ -41,9 +41,10 @@ exports.getAllTrips = async (req, res, next) => {
 
 exports.tripDetailsCtrl = async (req, res, next) => {
     const {id} = req.params
-    console.log("Este es el ID a buscar",id)
+    
     try {
         const foundTrip = await Trip.findById(id)
+        .populate("_customer")
         res.status(201).json({message: "Found Trip is", foundTrip})
     } catch (error) {
         res.status(400).json({ message: "Couldn't find any Trips with that id", error });

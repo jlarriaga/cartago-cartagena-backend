@@ -51,7 +51,7 @@ exports.createPropertiesCtrl = async (req, res, next) => {
 
 exports.findAvailablePropertiesCtrl = async (req, res, next) => {
     const {checkinDate, checkoutDate, numOfTravelers,...rest} = req.body
-    console.log("Este es el CL", checkinDate, checkoutDate, numOfTravelers);
+    
      try {
        
       // const availableProperties = await Property.find()
