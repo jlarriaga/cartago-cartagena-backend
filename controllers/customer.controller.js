@@ -76,3 +76,12 @@ exports.getCustomerIdCtrl = async (req, res, next) => {
     res.status(404).json({ message: "Customer not found" });
   }
 };
+
+exports.getAllCustomersCtrl = async (req, res, next) => {
+  try {
+    const customerList = await Customer.find();
+    res.status(200).json(customerList);
+  } catch (error) {
+    res.status(400).json({ message: "Error finding all Customers" });
+  }
+}
